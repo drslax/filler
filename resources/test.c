@@ -6,8 +6,7 @@
 /*   By: aelouarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 16:29:37 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/16 03:24:26 by aelouarg         ###   ########.fr       */
-/*   Updated: 2019/04/15 17:56:59 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/16 05:01:50 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +17,65 @@ char	who_play(t_map map)
 	if (map.p == 1)
 		return ('O');
 	else
-		return ('Y');
+		return ('X');
 }
-int		heat_tab(t_map map)
+
+int		who_counter(int p)
+{
+	if (p == 1)
+		return (2);
+	else
+		return (1);
+}
+
+int		edit_tab(char c)
+{
+	if (c == 'X' || c == 'x' )
+		return (-2);
+	else if(c == 'O' || c == 'o')	
+		return (-1);
+	return (0);
+}
+
+int		**heat_tab(t_map map)
 {
 	int		**tab;
 	int		i;
 	int		j;
 	char	p;
 
-	i = 0;
-	tab = (int **)malloc(sizeof(int **)*map.y);
-	while(i++ < map.x)
-		tab[i] = (int *)malloc(sizeof(int *)*map.x);
+	i = -1;
+	tab = (int **)malloc(sizeof(int *)*map.y);
+	while(++i < map.y)
+		tab[i] = (int *)malloc(sizeof(int )*map.x);
 	p = who_play(map);
-	i = 0;
-	j = 0;
-	return (0);
+	i = -1;
+	while (++i < map.y)
+	{
+		j = -1;
+		while (++j < map.x)
+		{
+			tab[i][j] = edit_tab(map.map[i][j]);
+		}
+	}
+	return (tab);
+}
+
+void	print_tab(int **tab, int x, int y)
+{
+	int		i,j;
+
+	i = -1;
+	while (++i < y)
+	{
+		j = 0;
+		while (j < x)
+		{
+			ft_putnbr_fd(tab[i][j], 2);
+			j++;	
+		}
+		ft_putstr_fd("\n", 2);
+	}
 }
 
 int 	main(void)
@@ -43,6 +84,7 @@ int 	main(void)
 	t_map	map;
 	char 	*tmp;
 	char 	*tmp2;
+	int		**tab;
 
 	i = 8;
 	get_next_line(0, &tmp);
@@ -71,7 +113,9 @@ int 	main(void)
 		map.map[i] = tmp;
 		ft_putstr_fd(map.map[i],2);
 		ft_putstr_fd("\n",2);
-		free(tmp2);
 	}
+	tab = heat_tab(map);
+	print_tab(tab, map.x, map.y);
+	free(tmp2);
 	return 0;
 }
