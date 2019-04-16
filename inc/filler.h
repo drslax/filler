@@ -26,4 +26,10 @@ typedef struct		s_map
 	char			**map;
 }					t_map;
 
+int             who_counter(int p);
+int				**map_to_int(t_map map);
+void			heat_map(int **tab, t_map map);
+int				heat_init(int **tab, t_map map);
+
+
 #endif
