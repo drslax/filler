@@ -6,13 +6,15 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 01:39:17 by aelouarg          #+#    #+#             */
-/*   Updated: 2018/10/21 04:50:06 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/16 03:21:36 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BUFF_SIZE 8
+# include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -25,7 +27,6 @@ typedef struct		s_list
 }					t_list;
 
 char				*ft_strcapitalize(char *str);
-char				*ft_strnjoin(char *s1, char *s2, size_t len);
 char				*ft_strlowcase(char *str);
 char				*ft_strupcase(char *str);
 char				*ft_strrev(char *str);
@@ -86,12 +87,13 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int nb);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+char				*ft_strnjoin(char *s1, char *s2, size_t len);
 void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 void				ft_sort_integer_table(int *tab, int size);
-int						get_next_line(int const fd, char **line);
+int				get_next_line(const int fd, char **line);
 
 #endif

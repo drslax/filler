@@ -6,11 +6,11 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/20 04:39:02 by aelouarg          #+#    #+#             */
-/*   Updated: 2018/10/21 07:38:59 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/16 03:18:35 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static	unsigned int	ft_linelen(char *tab)
 {
