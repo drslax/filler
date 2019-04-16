@@ -6,7 +6,7 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 16:29:37 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/16 05:01:50 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/16 17:33:43 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void		heat_map_rekt(int **tab, int x, int y, t_map map, int c)
 {
-	if(x + 1 < map.x && tab[y][x + 1] == c)
+	if (x + 1 < map.x && tab[y][x + 1] == c)
 		tab[y][x] = c + 1;
-	if(x - 1 >= 0 && tab[y][x - 1] == c)
+	if (x - 1 >= 0 && tab[y][x - 1] == c)
 		tab[y][x] = c + 1;
-	if(y + 1 < map.y && tab[y + 1][x] == c)
+	if (y + 1 < map.y && tab[y + 1][x] == c)
 		tab[y][x] = c + 1;
-	if(y - 1 >= 0 && tab[y - 1][x] == c)
+	if (y - 1 >= 0 && tab[y - 1][x] == c)
 		tab[y][x] = c + 1;
-	if(y - 1 >= 0 && x - 1 >= 0 && tab[y - 1][x - 1] == c)
+	if (y - 1 >= 0 && x - 1 >= 0 && tab[y - 1][x - 1] == c)
 		tab[y][x] = c + 1;
-	if(y + 1 < map.y && x + 1 < map.x && tab[y + 1][x + 1] == c)
+	if (y + 1 < map.y && x + 1 < map.x && tab[y + 1][x + 1] == c)
 		tab[y][x] = c + 1;
-	if(x - 1 >= 0 && y + 1 < map.y && tab[y + 1][x - 1] == c)
+	if (x - 1 >= 0 && y + 1 < map.y && tab[y + 1][x - 1] == c)
 		tab[y][x] = c + 1;
-	if(y - 1 >= 0 && x + 1 < map.x && tab[y - 1][x + 1] == c)
+	if (y - 1 >= 0 && x + 1 < map.x && tab[y - 1][x + 1] == c)
 		tab[y][x] = c + 1;
 }
 
-void		heat_map(int **tab, t_map map)
+void			heat_map(int **tab, t_map map)
 {
 	int	c;
 	int	i;
@@ -45,7 +45,7 @@ void		heat_map(int **tab, t_map map)
 		while (++i < map.y)
 		{
 			j = -1;
-			while(++j < map.x)
+			while (++j < map.x)
 			{
 				if (tab[i][j] == 0)
 					heat_map_rekt(tab, j, i, map, c);
@@ -54,27 +54,27 @@ void		heat_map(int **tab, t_map map)
 	}
 }
 
-static int		heat_init_rekt(int **tab, int x, int y, t_map map)
+static void		heat_init_rekt(int **tab, int x, int y, t_map map)
 {
-	if(x + 1 < map.x && tab[y][x + 1] != -1 && tab[y][x + 1] != -2)
+	if (x + 1 < map.x && tab[y][x + 1] != -1 && tab[y][x + 1] != -2)
 		tab[y][x + 1] = 1;
-	if(x - 1 >= 0 && tab[y][x - 1] != -1 && tab[y][x - 1] != -2)
+	if (x - 1 >= 0 && tab[y][x - 1] != -1 && tab[y][x - 1] != -2)
 		tab[y][x - 1] = 1;
-	if(y + 1 < map.y && tab[y + 1][x] != -1 && tab[y + 1][x] != -2 )
+	if (y + 1 < map.y && tab[y + 1][x] != -1 && tab[y + 1][x] != -2)
 		tab[y + 1][x] = 1;
-	if(y - 1 >= 0 && tab[y - 1][x] != -1 && tab[y - 1][x] != -2)
+	if (y - 1 >= 0 && tab[y - 1][x] != -1 && tab[y - 1][x] != -2)
 		tab[y - 1][x] = 1;
-	if(y - 1 >= 0 && x - 1 >= 0 && tab[y - 1][x - 1] != -1 && tab[y - 1][x - 1] != -2)
+	if (y - 1 >= 0 && x - 1 >= 0 && tab[y - 1][x - 1] != -1 && tab[y - 1][x - 1] != -2)
 		tab[y - 1][x - 1] = 1;
-	if(y + 1 < map.y && x + 1 < map.x && tab[y + 1][x + 1] != -1 && tab[y + 1][x + 1] != -2)
+	if (y + 1 < map.y && x + 1 < map.x && tab[y + 1][x + 1] != -1 && tab[y + 1][x + 1] != -2)
 		tab[y + 1][x + 1] = 1;
-	if(x - 1 >= 0 && y + 1 < map.y && tab[y + 1][x - 1] != -1 && tab[y + 1][x - 1] != -2)
+	if (x - 1 >= 0 && y + 1 < map.y && tab[y + 1][x - 1] != -1 && tab[y + 1][x - 1] != -2)
 		tab[y + 1][x - 1] = 1;
-	if(y - 1 >= 0 && x + 1 < map.x && tab[y - 1][x + 1] != -1 && tab[y - 1][x + 1] != -2)
+	if (y - 1 >= 0 && x + 1 < map.x && tab[y - 1][x + 1] != -1 && tab[y - 1][x + 1] != -2)
 		tab[y - 1][x + 1] = 1;
 }
 
-int		heat_init(int **tab, t_map map)
+void			heat_init(int **tab, t_map map)
 {
 	int	c;
 	int	i;
@@ -85,7 +85,7 @@ int		heat_init(int **tab, t_map map)
 	while (++i < map.y)
 	{
 		j = -1;
-		while(++j < map.x)
+		while (++j < map.x)
 			if (tab[i][j] == c)
 				heat_init_rekt(tab, j, i, map);
 	}
