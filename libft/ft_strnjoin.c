@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/10 15:41:44 by aelouarg          #+#    #+#             */
-/*   Updated: 2018/10/10 08:20:44 by aelouarg         ###   ########.fr       */
+/*   Created: 2018/10/21 04:39:52 by aelouarg          #+#    #+#             */
+/*   Updated: 2018/10/21 07:39:25 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	len_src;
-	unsigned int	len_dest;
-	unsigned int	i;
+#include "libft.h"
 
-	while (!dest || !src)
-		return (0);
-	len_src = 0;
-	while (src[len_src] != '\0')
-		len_src++;
-	len_dest = 0;
+char		*ft_strnjoin(char *s1, char *s2, size_t len)
+{
+	char	*str;
+	size_t	n;
+	size_t	i;
+	size_t	j;
+
+	j = 0;
 	i = 0;
-	while (src[i] != '\0' && i < size - 1)
+	n = ft_strlen(s1) + len + 1;
+	str = ft_strnew(n);
+	while (s1[i] != '\0')
 	{
-		dest[i] = src[i];
+		str[i] = s1[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (len_src);
+	len++;
+	while (s2[j] != '\0' && --len > 0)
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }

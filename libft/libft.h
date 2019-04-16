@@ -6,15 +6,13 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 01:39:17 by aelouarg          #+#    #+#             */
-/*   Updated: 2018/10/11 23:12:15 by aelouarg         ###   ########.fr       */
+/*   Updated: 2018/10/21 04:50:06 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 8
-# include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -27,6 +25,7 @@ typedef struct		s_list
 }					t_list;
 
 char				*ft_strcapitalize(char *str);
+char				*ft_strnjoin(char *s1, char *s2, size_t len);
 char				*ft_strlowcase(char *str);
 char				*ft_strupcase(char *str);
 char				*ft_strrev(char *str);
@@ -93,6 +92,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 void				ft_sort_integer_table(int *tab, int size);
-int				get_next_line(const int fd, char **line);
+int						get_next_line(int const fd, char **line);
 
 #endif
