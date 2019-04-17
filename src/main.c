@@ -6,7 +6,7 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 16:29:37 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/17 12:54:50 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:50:40 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	print_tab(int **tab, int x, int y)
 	while (++i < y)
 	{
 		j = 0;
+		ft_putnbr_fd(i, 2);
+		ft_putstr_fd(" : ", 2);
 		while (j < x)
 		{
 			if (tab[i][j] <= 9 && tab[i][j] >=0)
@@ -84,8 +86,8 @@ static	void	parse_map(t_map *map)
 		tmp = line;
 		line = &line[4];
 		map->map[i] = line;
-		//ft_putstr_fd(map->map[i],2);
-		//ft_putstr_fd("\n",2);
+		ft_putstr_fd(map->map[i],2);
+		ft_putstr_fd("\n",2);
 	}
 }
 
@@ -107,7 +109,6 @@ int			 	main(void)
 			free(tmp);
 			get_next_line(0, &tmp);
 		}
-		ft_putstr_fd(tmp,2);
 		map.y = ft_atoi(&tmp[8]);
 		i = 8;
 		while (ft_isdigit(tmp[i++]));
