@@ -6,7 +6,7 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:13:18 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/16 19:40:02 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/17 10:28:36 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	valid_place(t_map map, t_token token, int **tab, int y, int x)
 		{
 			if (x >= map.x || y >= map.y)
 				return(0);
-			if (tab[y][x] == -1 && token.token[i][j] == '*')
+			if (tab[y][x] == -(map.p) && token.token[i][j] == '*')
 				count++;
 			score += tab[y][x];
 			x++;
@@ -52,7 +52,8 @@ static t_coord	token_coord(t_map map, t_token token, int **tab)
 	i = -1;
 	point.x = -5;
 	point.y = -5;
-	point.score = 247825;
+	point.score = 214;
+	//point.score = 2147483647;
 	while (++i < map.y)
 	{
 		j = -1;
@@ -76,11 +77,11 @@ void	place_token(t_map map, t_token token, int **tab)
 	t_coord		point;
 
 	point = token_coord(map, token, tab);
-	ft_putnbr_fd(point.x, 1);
+	ft_putnbr_fd(point.y, 1);
 	//ft_putnbr_fd(point.x, 2);
 	ft_putstr_fd(" ", 1);
 	//ft_putstr_fd(" ", 2);
-	ft_putnbr_fd(point.y, 1);
+	ft_putnbr_fd(point.x, 1);
 	//ft_putnbr_fd(point.y, 2);
 	ft_putstr_fd("\n", 1);
 	//ft_putstr_fd("\n", 2);
