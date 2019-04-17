@@ -51,20 +51,19 @@ static	void	parse_token(t_token *token)
 	while (ft_isdigit(tmp[i++]))
 		token->x = ft_atoi(&tmp[i]);
 	free(tmp);
-	ft_putstr_fd("\n",2);
-	ft_putnbr_fd(token->y,2);
-	ft_putstr_fd("\n",2);
-	ft_putnbr_fd(token->x,2);
-	ft_putstr_fd("\n",2);
+	//ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(token->y,2);
+	//ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(token->x,2);
+	//ft_putstr_fd("\n",2);
 	i = -1;
 	token->token = (char **)malloc(sizeof(char *) * (token->y));
 	while(++i < token->y)
 	{
 		get_next_line(0, &line);
 		token->token[i] = line;
-		ft_putstr_fd(token->token[i],2);
-		ft_putstr_fd("\n",2);
-		free(line);
+		//ft_putstr_fd(token->token[i],2);
+		//ft_putstr_fd("\n",2);
 	}
 }
 
@@ -82,8 +81,8 @@ static	void	parse_map(t_map *map)
 		tmp = line;
 		line = &line[4];
 		map->map[i] = line;
-		ft_putstr_fd(map->map[i],2);
-		ft_putstr_fd("\n",2);
+		//ft_putstr_fd(map->map[i],2);
+		//ft_putstr_fd("\n",2);
 	}
 }
 
@@ -107,17 +106,18 @@ int			 	main(void)
 	free(tmp);
 	get_next_line(0, &tmp);
 	free(tmp);
-	ft_putnbr_fd(map.p,2);
-	ft_putstr_fd("\n",2);
-	ft_putnbr_fd(map.y,2);
-	ft_putstr_fd("\n",2);
-	ft_putnbr_fd(map.x,2);
-	ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(map.p,2);
+	//ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(map.y,2);
+	//ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(map.x,2);
+	//ft_putstr_fd("\n",2);
 	parse_map(&map);
 	parse_token(&token);
 	tab = map_to_int(map);
 	heat_init(tab,map);
 	heat_map(tab,map);
-	print_tab(tab, map.x, map.y);
+	//print_tab(tab, map.x, map.y);
+	place_token(map, token, tab);
 	return 0;
 }
