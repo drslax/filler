@@ -6,7 +6,7 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 16:29:37 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/17 14:50:40 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/18 03:14:17 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ static	void	parse_token(t_token *token)
 	while (ft_isdigit(tmp[i++]))
 		token->x = ft_atoi(&tmp[i]);
 	free(tmp);
-	ft_putstr_fd("\n--------fff--------\n",2);
+	//ft_putstr_fd("\n--------fff--------\n",2);
 	//ft_putstr_fd("\n",2);
-	ft_putnbr_fd(token->y,2);
-	ft_putstr_fd(" ",2);
-	ft_putnbr_fd(token->x,2);
-	ft_putstr_fd("\n",2);
+	//ft_putnbr_fd(token->y,2);
+	//ft_putstr_fd(" ",2);
+	//ft_putnbr_fd(token->x,2);
+	//ft_putstr_fd("\n",2);
 	i = -1;
 	token->token = (char **)malloc(sizeof(char *) * (token->y));
 	while(++i < token->y)
@@ -66,10 +66,10 @@ static	void	parse_token(t_token *token)
 		get_next_line(0, &line);
 		//ft_putstr_fd(tmp,2);
 		token->token[i] = line;
-		ft_putstr_fd(token->token[i],2);
-		ft_putstr_fd("\n",2);
+		//ft_putstr_fd(token->token[i],2);
+		//ft_putstr_fd("\n",2);
 	}
-	ft_putstr_fd("\n--------fff--------\n",2);
+	//ft_putstr_fd("\n--------fff--------\n",2);
 }
 
 static	void	parse_map(t_map *map)
@@ -86,8 +86,8 @@ static	void	parse_map(t_map *map)
 		tmp = line;
 		line = &line[4];
 		map->map[i] = line;
-		ft_putstr_fd(map->map[i],2);
-		ft_putstr_fd("\n",2);
+		//ft_putstr_fd(map->map[i],2);
+		//ft_putstr_fd("\n",2);
 	}
 }
 
@@ -127,8 +127,8 @@ int			 	main(void)
 		tab = map_to_int(map);
 		heat_init(tab,map);
 		heat_map(tab,map);
-		print_tab(tab, map.x, map.y);
-		ft_putstr_fd("\n",2);
+		//print_tab(tab, map.x, map.y);
+		//ft_putstr_fd("\n",2);
 		place_token(map, token, tab);
 		i = -1;
 		while (++i < map.y)

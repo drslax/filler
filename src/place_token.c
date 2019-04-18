@@ -6,7 +6,7 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:13:18 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/17 15:59:16 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/04/18 03:25:22 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 		while (j < token.x)
 		{
 			if (x >= map.x || y >= map.y)
-				return(0);
-			if (tab[y][x] == -2)
-				return(0);
-			if (tab[y][x] == -1 && token.token[i][j] == '*')
+				return(-1);
+			if (tab[y][x] == who_counter(map.p))
+				return(-1);
+			if (tab[y][x] == -(map.p) && token.token[i][j] == '*')
 				count++;
 			if (tab[y][x] != -(map.p) && token.token[i][j] == '*')
 				score += tab[y][x];
@@ -47,22 +47,22 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 	if (count == 1)
 	{
 
-		ft_putnbr_fd(a, 2);
-		ft_putstr_fd(" | ", 2);
-		ft_putnbr_fd(b, 2);
-		ft_putchar_fd('\n', 2);
-		ft_putstr_fd("count = ",2);
-		ft_putnbr_fd(count,2);
-		ft_putstr_fd("\n",2);
+//		ft_putnbr_fd(a, 2);
+	//	ft_putstr_fd(" | ", 2);
+	//	ft_putnbr_fd(b, 2);
+	//	ft_putchar_fd('\n', 2);
+	//	ft_putstr_fd("count = ",2);
+	//	ft_putnbr_fd(count,2);
+	//	ft_putstr_fd("\n",2);
 		return (score);
 	}
 	if (count)
 	{
-		ft_putstr_fd("count = ",2);
-		ft_putnbr_fd(count,2);
-		ft_putstr_fd("\n",2);
+//		ft_putstr_fd("count = ",2);
+	//	ft_putnbr_fd(count,2);
+	//	ft_putstr_fd("\n",2);
 	}
-	return (0);
+	return (-1);
 
 }
 
@@ -84,18 +84,21 @@ static t_coord	token_coord(t_map map, t_token token, int **tab)
 		{
 
 			score = valid_place(map, token, tab, i, j);
-			if (score && score <= point.score)
+			//ft_putstr_fd("\n",2);
+			//ft_putnbr_fd(score,2);
+			//ft_putstr_fd("\n",2);
+			if (score >= 0 && score <= point.score)
 			{		
 				point.x = j;
 				point.y = i;
 				point.score = score;
-				ft_putnbr_fd(point.y,2);
-				ft_putstr_fd(" - ",2);
-				ft_putnbr_fd(point.x,2);
-				ft_putstr_fd("  ",2);
-				ft_putstr_fd("score = ",2);
-				ft_putnbr_fd(score,2);
-				ft_putstr_fd("\n",2);
+				//ft_putnbr_fd(point.y,2);
+				//ft_putstr_fd(" - ",2);
+				//ft_putnbr_fd(point.x,2);
+				//ft_putstr_fd("  ",2);
+				//ft_putstr_fd("score = ",2);
+				//ft_putnbr_fd(score,2);
+				//ft_putstr_fd("\n",2);
 			}
 		}
 	}
@@ -107,13 +110,13 @@ void	place_token(t_map map, t_token token, int **tab)
 	t_coord		point;
 
 	point = token_coord(map, token, tab);
-	ft_putstr_fd("\n", 2);
+	//ft_putstr_fd("\n", 2);
 	ft_putnbr_fd(point.y, 1);
-	ft_putnbr_fd(point.y, 2);
+	//ft_putnbr_fd(point.y, 2);
 	ft_putstr_fd(" ", 1);
-	ft_putstr_fd(" ", 2);
+	//ft_putstr_fd(" ", 2);
 	ft_putnbr_fd(point.x, 1);
-	ft_putnbr_fd(point.x, 2);
+	//ft_putnbr_fd(point.x, 2);
 	ft_putstr_fd("\n", 1);
-	ft_putstr_fd("\n", 2);
+	//ft_putstr_fd("\n", 2);
 }
