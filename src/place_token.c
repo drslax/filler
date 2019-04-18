@@ -30,13 +30,13 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 		x = b;
 		while (j < token.x)
 		{
-			if (x >= map.x || y >= map.y)
+			if ((x >= map.x || y >= map.y) && token.token[i][j] == '*')
 				return(-1);
-			if (tab[y][x] == who_counter(map.p))
+			if (token.token[i][j] == '*' && tab[y][x] == who_counter(map.p))
 				return(-1);
-			if (tab[y][x] == -(map.p) && token.token[i][j] == '*')
+			if (token.token[i][j] == '*' && tab[y][x] == -(map.p))
 				count++;
-			if (tab[y][x] != -(map.p) && token.token[i][j] == '*')
+			if (token.token[i][j] == '*' && tab[y][x] != -(map.p))
 				score += tab[y][x];
 			x++;
 			j++;
@@ -45,23 +45,7 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 		y++;
 	}
 	if (count == 1)
-	{
-
-//		ft_putnbr_fd(a, 2);
-	//	ft_putstr_fd(" | ", 2);
-	//	ft_putnbr_fd(b, 2);
-	//	ft_putchar_fd('\n', 2);
-	//	ft_putstr_fd("count = ",2);
-	//	ft_putnbr_fd(count,2);
-	//	ft_putstr_fd("\n",2);
 		return (score);
-	}
-	if (count)
-	{
-//		ft_putstr_fd("count = ",2);
-	//	ft_putnbr_fd(count,2);
-	//	ft_putstr_fd("\n",2);
-	}
 	return (-1);
 
 }
@@ -84,21 +68,11 @@ static t_coord	token_coord(t_map map, t_token token, int **tab)
 		{
 
 			score = valid_place(map, token, tab, i, j);
-			//ft_putstr_fd("\n",2);
-			//ft_putnbr_fd(score,2);
-			//ft_putstr_fd("\n",2);
-			if (score >= 0 && score <= point.score)
+			if ((score > 0 && score <= point.score) || (score == 0 && point.score == 2147483647))
 			{		
 				point.x = j;
 				point.y = i;
 				point.score = score;
-				//ft_putnbr_fd(point.y,2);
-				//ft_putstr_fd(" - ",2);
-				//ft_putnbr_fd(point.x,2);
-				//ft_putstr_fd("  ",2);
-				//ft_putstr_fd("score = ",2);
-				//ft_putnbr_fd(score,2);
-				//ft_putstr_fd("\n",2);
 			}
 		}
 	}
@@ -110,13 +84,8 @@ void	place_token(t_map map, t_token token, int **tab)
 	t_coord		point;
 
 	point = token_coord(map, token, tab);
-	//ft_putstr_fd("\n", 2);
 	ft_putnbr_fd(point.y, 1);
-	//ft_putnbr_fd(point.y, 2);
 	ft_putstr_fd(" ", 1);
-	//ft_putstr_fd(" ", 2);
 	ft_putnbr_fd(point.x, 1);
-	//ft_putnbr_fd(point.x, 2);
 	ft_putstr_fd("\n", 1);
-	//ft_putstr_fd("\n", 2);
 }
