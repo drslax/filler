@@ -31,6 +31,7 @@ typedef struct		s_token
 {
 	int				x;
 	int				y;
+	int				minx;
 	char			**token;
 }					t_token;
 
@@ -43,7 +44,6 @@ typedef struct		s_coord
 
 int					who_counter(int p);
 int					**map_to_int(t_map map);
-void				heat_map(int **tab, t_map map);
 void				heat_init(int **tab, t_map map);
 void 				 place_token(t_map map, t_token token, int **tab);
 

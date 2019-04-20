@@ -26,7 +26,7 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 	count = 0;
 	while (i < token.y)
 	{
-		j = 0;
+		j = token.minx;
 		x = b;
 		while (j < token.x)
 		{
@@ -85,7 +85,12 @@ void	place_token(t_map map, t_token token, int **tab)
 
 	point = token_coord(map, token, tab);
 	ft_putnbr_fd(point.y, 1);
+//	ft_putnbr_fd(point.y, 2);
+//	ft_putstr_fd(" ", 2);
 	ft_putstr_fd(" ", 1);
-	ft_putnbr_fd(point.x, 1);
+//	ft_putnbr_fd(point.x - token.minx, 2);
+	ft_putnbr_fd(point.x - token.minx, 1);
+//	ft_putstr_fd("\n", 2);
+//	ft_putstr_fd("---------------------------------------------\n", 2);
 	ft_putstr_fd("\n", 1);
 }

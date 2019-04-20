@@ -32,7 +32,7 @@ static void		heat_map_rekt(int **tab, int x, int y, t_map map, int c)
 		tab[y][x] = c + 1;
 }
 
-void			heat_map(int **tab, t_map map)
+static void			heat_map(int **tab, t_map map)
 {
 	int	c;
 	int	i;
@@ -89,4 +89,5 @@ void			heat_init(int **tab, t_map map)
 			if (tab[i][j] == c)
 				heat_init_rekt(tab, j, i, map);
 	}
+	heat_map(tab,map);
 }
