@@ -6,7 +6,7 @@
 /*   By: aelouarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 23:42:41 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/16 19:25:32 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/05/29 11:58:31 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 
 typedef struct		s_map
 {
@@ -40,11 +40,11 @@ typedef struct		s_coord
 	int				score;
 	int				x;
 	int				y;
-}			t_coord;
+}					t_coord;
 
 int					who_counter(int p);
 int					**map_to_int(t_map map);
 void				heat_init(int **tab, t_map map);
-void 				 place_token(t_map map, t_token token, int **tab);
+void				place_token(t_map map, t_token token, int **tab);
 
 #endif

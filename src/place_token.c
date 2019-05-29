@@ -6,24 +6,25 @@
 /*   By: aelouarg <anas.elouargui@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:13:18 by aelouarg          #+#    #+#             */
-/*   Updated: 2019/04/18 03:25:22 by aelouarg         ###   ########.fr       */
+/*   Updated: 2019/05/29 12:05:49 by aelouarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/filler.h"
 
-static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
+static int		valid_place(t_map map, t_token token, int **tab, int a, int b)
 {
 	int	i;
 	int	j;
-	int y = a;
-	int x = b;
+	int y;
+	int x;
 	int	score;
 	int	count;
 
 	i = 0;
 	score = 0;
 	count = 0;
+	y = a;
 	while (i < token.y)
 	{
 		j = token.minx;
@@ -31,9 +32,9 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 		while (j < token.x)
 		{
 			if ((x >= map.x || y >= map.y) && token.token[i][j] == '*')
-				return(-1);
+				return (-1);
 			if (token.token[i][j] == '*' && tab[y][x] == who_counter(map.p))
-				return(-1);
+				return (-1);
 			if (token.token[i][j] == '*' && tab[y][x] == -(map.p))
 				count++;
 			if (token.token[i][j] == '*' && tab[y][x] != -(map.p))
@@ -47,15 +48,14 @@ static int	valid_place(t_map map, t_token token, int **tab, int a, int b)
 	if (count == 1)
 		return (score);
 	return (-1);
-
 }
 
 static t_coord	token_coord(t_map map, t_token token, int **tab)
 {
 	t_coord		point;
-	int		score;
-	int		i;
-	int		j;
+	int			score;
+	int			i;
+	int			j;
 
 	i = -1;
 	point.x = -1;
@@ -66,10 +66,10 @@ static t_coord	token_coord(t_map map, t_token token, int **tab)
 		j = -1;
 		while (++j < map.x)
 		{
-
 			score = valid_place(map, token, tab, i, j);
-			if ((score > 0 && score <= point.score) || (score == 0 && point.score == 2147483647))
-			{		
+			if ((score > 0 && score <= point.score) ||
+					(score == 0 && point.score == 2147483647))
+			{
 				point.x = j;
 				point.y = i;
 				point.score = score;
@@ -79,18 +79,13 @@ static t_coord	token_coord(t_map map, t_token token, int **tab)
 	return (point);
 }
 
-void	place_token(t_map map, t_token token, int **tab)
+void			place_token(t_map map, t_token token, int **tab)
 {
 	t_coord		point;
 
 	point = token_coord(map, token, tab);
 	ft_putnbr_fd(point.y, 1);
-//	ft_putnbr_fd(point.y, 2);
-//	ft_putstr_fd(" ", 2);
 	ft_putstr_fd(" ", 1);
-//	ft_putnbr_fd(point.x - token.minx, 2);
 	ft_putnbr_fd(point.x - token.minx, 1);
-//	ft_putstr_fd("\n", 2);
-//	ft_putstr_fd("---------------------------------------------\n", 2);
 	ft_putstr_fd("\n", 1);
 }
